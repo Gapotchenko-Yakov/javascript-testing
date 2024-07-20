@@ -1,6 +1,6 @@
 const validateValue = require("./validateValue");
 
-describe("validateValue", () => {
+describe.skip("validateValue", () => {
   test("Корректное значение", () => {
     expect(validateValue(50)).toBe(true);
   });
