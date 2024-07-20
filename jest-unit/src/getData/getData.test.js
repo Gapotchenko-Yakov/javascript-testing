@@ -247,6 +247,6 @@ describe("getData", () => {
     axios.get.mockReturnValue(response);
     const data = await getData();
     expect(axios.get).toBeCalledTimes(1);
-    expect(data).toEqual(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]);
+    expect(data).toMatchSnapshot();
   });
 });
