@@ -1,10 +1,13 @@
 import { findByText, fireEvent, render, screen } from "@testing-library/react";
 import axios from "axios";
 import Users from "./Users";
+import userEvent from "@testing-library/user-event";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
+import UserDetailsPage from "../pages/UserDetailsPage";
 
 jest.mock("axios");
 
-describe.skip("USERS TEST", () => {
+describe("USERS TEST", () => {
   let response;
 
   beforeEach(() => {
@@ -52,14 +55,36 @@ describe.skip("USERS TEST", () => {
         },
       ],
     };
+
+    axios.get.mockReturnValue(response);
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   test("Render users list", async () => {
-    axios.get.mockReturnValue(response);
     render(<Users />);
     const users = await screen.findAllByTestId("user-item");
     expect(users.length).toBe(10);
     expect(axios.get).toBeCalledTimes(1);
+  });
+
+  test("Redirect to details page", async () => {
+    render(
+      <MemoryRouter initialEntries={["/users"]}>
+        <Routes>
+          <Route path="/users" element={<Users />} />
+          <Route path="/users/:id" element={<UserDetailsPage />} />
+        </Routes>
+      </MemoryRouter>
+    );
+    const user = userEvent.setup();
+
+    const users = await screen.findAllByTestId("user-item");
+    expect(users.length).toBe(10);
+    await user.click(users[0]);
+    expect(screen.getByTestId("user-details-page")).toBeInTheDocument();
     screen.debug();
   });
 });
