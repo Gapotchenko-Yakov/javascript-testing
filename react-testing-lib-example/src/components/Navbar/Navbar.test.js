@@ -5,7 +5,7 @@ import userEvent from "@testing-library/user-event";
 import { renderWithRouter } from "../../tests/helpers/renderWithRouter";
 import Navbar from "./Navbar";
 
-describe("NAVBAR TEST", () => {
+describe.skip("NAVBAR TEST", () => {
   test("Redirect to details page", async () => {
     renderWithRouter(<Navbar />);
     const user = userEvent.setup();

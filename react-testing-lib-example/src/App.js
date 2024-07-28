@@ -10,7 +10,7 @@ import Navbar from "./components/Navbar/Navbar.jsx";
 
 function App() {
   return (
-    <div>
+    <div style={{ margin: "3rem 4rem" }}>
       <Navbar />
       <br />
       <br />
