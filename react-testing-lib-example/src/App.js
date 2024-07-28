@@ -5,6 +5,7 @@ import AboutPage from "./pages/AboutPage.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import Users from "./users/Users.jsx";
 import UserDetailsPage from "./pages/UserDetailsPage.jsx";
+import AppRouter from "./routes/AppRouter.jsx";
 
 function App() {
   return (
@@ -23,13 +24,7 @@ function App() {
       <br />
       <br />
       <br />
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/users" element={<Users />} />
-        <Route path="/users/:id" element={<UserDetailsPage />} />
-        <Route path="/*" element={<ErrorPage />} />
-      </Routes>
+      <AppRouter />
     </div>
   );
 }
