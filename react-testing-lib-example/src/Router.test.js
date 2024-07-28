@@ -4,19 +4,20 @@ import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 
 describe("TEST APP", () => {
-  test("Router Test", () => {
+  test("Router Test", async () => {
     render(
-      <MemoryRouter>
+      <MemoryRouter initialEntries={["/asdasd"]}>
         <App />
       </MemoryRouter>
     );
+    const user = userEvent.setup();
 
     const mainLink = screen.getByTestId("main-link");
     const aboutLink = screen.getByTestId("about-link");
 
-    userEvent.click(aboutLink);
+    await user.click(aboutLink);
     expect(screen.getByTestId("about-page")).toBeInTheDocument();
-    userEvent.click(mainLink);
+    await user.click(mainLink);
     expect(screen.getByTestId("main-page")).toBeInTheDocument();
   });
 });
