@@ -22,7 +22,11 @@ function App() {
       <button data-testid="toggle-btn" onClick={onClick}>
         Click me
       </button>
-      <input type="text" placeholder="input value..." />
+      <input
+        onChange={(e) => setValue(e.target.value)}
+        type="text"
+        placeholder="input value..."
+      />
     </div>
   );
 }

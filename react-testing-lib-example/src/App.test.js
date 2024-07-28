@@ -17,11 +17,9 @@ describe("TEST APP", () => {
     render(<App />);
     // const helloWorldElement = screen.queryByText(/hello world 2/i);
     // expect(helloWorldElement).toBeNull();
-    screen.debug();
     const helloWorldElement = await screen.findByText(/data/i);
     expect(helloWorldElement).toBeInTheDocument();
     expect(helloWorldElement).toHaveStyle({ color: "red" });
-    screen.debug();
   });
 
   test("CLICK EVENT", () => {
@@ -33,5 +31,18 @@ describe("TEST APP", () => {
     expect(screen.queryByTestId("toggle-elem")).toBeInTheDocument();
     fireEvent.click(btn);
     expect(screen.queryByTestId("toggle-elem")).toBeNull();
+  });
+
+  test("INPUT EVENT", () => {
+    render(<App />);
+
+    screen.debug();
+
+    const input = screen.getByPlaceholderText(/input value/i);
+    expect(screen.getByTestId("value-elem")).toContainHTML("");
+    fireEvent.input(input, { target: { value: "123123" } });
+    expect(screen.getByTestId("value-elem")).toContainHTML("123123");
+
+    screen.debug();
   });
 });
