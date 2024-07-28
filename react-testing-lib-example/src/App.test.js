@@ -1,4 +1,4 @@
-import { findByText, render, screen } from "@testing-library/react";
+import { findByText, fireEvent, render, screen } from "@testing-library/react";
 import App from "./App";
 
 describe("TEST APP", () => {
@@ -22,5 +22,16 @@ describe("TEST APP", () => {
     expect(helloWorldElement).toBeInTheDocument();
     expect(helloWorldElement).toHaveStyle({ color: "red" });
     screen.debug();
+  });
+
+  test("CLICK EVENT", () => {
+    render(<App />);
+
+    const btn = screen.getByTestId("toggle-btn");
+    expect(screen.queryByTestId("toggle-elem")).toBeNull();
+    fireEvent.click(btn);
+    expect(screen.queryByTestId("toggle-elem")).toBeInTheDocument();
+    fireEvent.click(btn);
+    expect(screen.queryByTestId("toggle-elem")).toBeNull();
   });
 });
