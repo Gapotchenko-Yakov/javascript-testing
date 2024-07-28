@@ -10,6 +10,9 @@ describe("TEST APP", () => {
         <App />
       </MemoryRouter>
     );
+
+    expect(screen.getByTestId("not-found-page")).toBeInTheDocument();
+
     const user = userEvent.setup();
 
     const mainLink = screen.getByTestId("main-link");
