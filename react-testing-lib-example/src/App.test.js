@@ -1,4 +1,5 @@
 import { findByText, fireEvent, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import App from "./App";
 
 describe("TEST APP", () => {
@@ -40,7 +41,8 @@ describe("TEST APP", () => {
 
     const input = screen.getByPlaceholderText(/input value/i);
     expect(screen.getByTestId("value-elem")).toContainHTML("");
-    fireEvent.input(input, { target: { value: "123123" } });
+    // fireEvent.input(input, { target: { value: "123123" } });
+    userEvent.type(input, "123123");
     expect(screen.getByTestId("value-elem")).toContainHTML("123123");
 
     screen.debug();
