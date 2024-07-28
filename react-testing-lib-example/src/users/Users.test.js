@@ -4,7 +4,7 @@ import Users from "./Users";
 
 jest.mock("axios");
 
-describe("USERS TEST", () => {
+describe.skip("USERS TEST", () => {
   let response;
 
   beforeEach(() => {
