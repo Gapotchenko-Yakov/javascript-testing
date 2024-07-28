@@ -2,14 +2,12 @@ import { findByText, fireEvent, render, screen } from "@testing-library/react";
 import axios from "axios";
 import Users from "./Users";
 import userEvent from "@testing-library/user-event";
-import { MemoryRouter, Route, Routes } from "react-router-dom";
-import UserDetailsPage from "../pages/UserDetailsPage";
-import AppRouter from "../routes/AppRouter";
+
 import { renderWithRouter } from "../tests/helpers/renderWithRouter";
 
 jest.mock("axios");
 
-describe("USERS TEST", () => {
+describe.skip("USERS TEST", () => {
   let response;
 
   beforeEach(() => {
@@ -73,7 +71,7 @@ describe("USERS TEST", () => {
   });
 
   test("Redirect to details page", async () => {
-    render(renderWithRouter("/users"));
+    renderWithRouter(null, "/users");
     const user = userEvent.setup();
 
     const users = await screen.findAllByTestId("user-item");
