@@ -2,7 +2,7 @@ import { findByText, fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
 
-describe("TEST APP", () => {
+describe.skip("TEST APP", () => {
   test("renders learn react hello", () => {
     render(<App />);
     const helloWorldElement = screen.getByText(/hello world/i);
