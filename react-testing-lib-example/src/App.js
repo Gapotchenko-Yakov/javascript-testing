@@ -1,11 +1,11 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import MainPage from "./pages/MainPage";
-import AboutPage from "./pages/AboutPage";
+import MainPage from "./pages/MainPage.jsx";
+import AboutPage from "./pages/AboutPage.jsx";
 
 function App() {
   return (
-    <BrowserRouter>
+    <div>
       <Link to="/" data-testid="main-link">
         Main
       </Link>
@@ -16,7 +16,7 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/about" element={<AboutPage />} />
       </Routes>
-    </BrowserRouter>
+    </div>
   );
 }
 
