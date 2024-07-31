@@ -17,9 +17,13 @@ const Counter = () => {
 
   return (
     <div>
-      <h2>Value: {value}</h2>
-      <button onClick={onDecrement}>DEC</button>
-      <button onClick={onIncrement}>INC</button>
+      <h2 data-testid="value-title">{value}</h2>
+      <button data-testid="decrement-btn" onClick={onDecrement}>
+        DEC
+      </button>
+      <button data-testid="increment-btn" onClick={onIncrement}>
+        INC
+      </button>
     </div>
   );
 };
