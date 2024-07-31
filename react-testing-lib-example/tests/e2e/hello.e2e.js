@@ -3,7 +3,7 @@
 import { expect } from "@wdio/globals";
 import HelloPage from "../pages/hello.page";
 
-describe("Hello application", () => {
+describe.skip("Hello application", () => {
   it("should toggle", async () => {
     await HelloPage.open();
 

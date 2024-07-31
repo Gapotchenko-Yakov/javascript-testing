@@ -1,10 +1,11 @@
 import { browser } from "@wdio/globals";
+import Page from "./page";
 
 /**
  * main page object containing all methods, selectors and functionality
  * that is shared across all page objects
  */
-export default class HomePage {
+export default class HomePage extends Page {
   get toggleBtn() {
     return $("#toggle");
   }
@@ -22,10 +23,6 @@ export default class HomePage {
     await this.toggleBtn.click();
   }
 
-  /**
-   * Opens a sub page of the page
-   * @param path path of the sub page (e.g. /path/to/page.html)
-   */
   open(path) {
     return browser.url(`http://localhost:3000${path}`);
   }
