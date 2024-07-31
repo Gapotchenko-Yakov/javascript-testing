@@ -1,10 +1,11 @@
 import userEvent from "@testing-library/user-event";
 import Counter from "./Counter";
 import { renderWithRedux } from "../../tests/helpers/renderWithRedux";
+import { renderTestApp } from "../../tests/helpers/renderTestApp";
 
 describe("Counter test", () => {
   test("Test Router", async () => {
-    const container = renderWithRedux(<Counter />);
+    const container = renderTestApp(null);
 
     const user = userEvent.setup();
 
