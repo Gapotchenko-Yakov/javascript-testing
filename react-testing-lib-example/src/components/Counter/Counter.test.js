@@ -1,16 +1,10 @@
 import userEvent from "@testing-library/user-event";
 import Counter from "./Counter";
-import { render } from "@testing-library/react";
-import { Provider } from "react-redux";
-import { createReduxStore } from "../../store/store";
+import { renderWithRedux } from "../../tests/helpers/renderWithRedux";
 
 describe("Counter test", () => {
   test("Test Router", async () => {
-    const container = render(
-      <Provider store={createReduxStore({ counter: { value: 0 } })}>
-        <Counter />
-      </Provider>
-    );
+    const container = renderWithRedux(<Counter />);
 
     const user = userEvent.setup();
 
